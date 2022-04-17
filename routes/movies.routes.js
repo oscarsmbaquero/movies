@@ -5,7 +5,7 @@ import { Movie } from '../models/Movie.js';
 const router = express.Router();
  router.get('/', async (req, res) => {
     try {
-      const movies = await Movie.find();
+      const movies = await Movie.find().populate('actor');;
       return res.status(200).json(movies)
     } catch (err) {
       return res.status(500).json(err);
@@ -87,15 +87,31 @@ const router = express.Router();
     }
 });
 
-router.put('/:id', async (req, res, next) => {
+// router.put('/:id', async (req, res, next) => {
+//   try {
+//       const { id } = req.params; //Recuperamos el id de la url
+//       const movieModify = new Movie(req.body); //instanciamos un nuevo Character con la información del body
+//       movieModify._id = id; //añadimos la propiedad _id al personaje creado
+//       const movieUpdated = await Movie.findByIdAndUpdate(id , movieModify);
+//       return res.status(200).json(movieUpdated);//Este personaje que devolvemos es el anterior a su modificación
+//   } catch (error) {
+//       return next(error)
+//   }
+// });
+
+router.put('/add-movie', async (req, res, next) => {
   try {
-      const { id } = req.params; //Recuperamos el id de la url
-      const movieModify = new Movie(req.body); //instanciamos un nuevo Character con la información del body
-      movieModify._id = id; //añadimos la propiedad _id al personaje creado
-      const movieUpdated = await Movie.findByIdAndUpdate(id , movieModify);
-      return res.status(200).json(movieUpdated);//Este personaje que devolvemos es el anterior a su modificación
+      
+      const { actorId } = req.body;
+      const { movieId } = req.body;
+      const updatedMovie = await Movie.findByIdAndUpdate(
+          movieId,
+          { $push: { actor: actorId } },
+          { new: true }
+      );
+      return res.status(200).json(updatedMovie);
   } catch (error) {
-      return next(error)
+      return next(error);
   }
 });
 

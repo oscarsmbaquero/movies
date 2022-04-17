@@ -8,6 +8,8 @@ const movieSchema = new Schema(
     director: { type: String, required: true },
     year: { type: Number },
     genre: { type: String, required: true },
+
+    actor: [{ type: mongoose.Types.ObjectId, ref: 'Actor' }],
   },
   {
     timestamps: true,

@@ -9,6 +9,7 @@
     "dev": "nodemon server.js",
     "load-movie-seed": "node ./seed/movie.seed.js",
     "load-cinema-seed": "node ./seed/cinema.seed.js",
+    "load-actor-seed": "node ./seed/actor.seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Oscar",

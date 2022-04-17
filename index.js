@@ -5,6 +5,7 @@ import { connection} from './util/db.js';
 
  import { moviesRoutes } from './routes/movies.routes.js';
  import { cinemaRoutes } from './routes/cinema.routes.js';
+ import { actorsRoutes } from './routes/actor.routes.js';
 
 // SERVER
 const PORT = 3000;
@@ -24,6 +25,7 @@ server.use(express.urlencoded({ extended: false }));
 //server.use('/', router);
 server.use('/movies', moviesRoutes);
 server.use('/cinema', cinemaRoutes);
+server.use('/actor', actorsRoutes);
 // Routes
  
 // server.use('/locations', locationRoutes);

@@ -5,6 +5,7 @@ import { Cinema } from '../models/Cinema.js';
 const router = express.Router();
  router.get('/', async (req, res) => {
     try {
+      //
       const cinemas = await Cinema.find().populate('movies');
       return res.status(200).json(cinemas)
     } catch (err) {
