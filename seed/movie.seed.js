@@ -55,7 +55,7 @@ const movieDocuments = movie.map(movie => new Movie(movie));
 // En este caso, nos conectaremos de nuevo a nuestra base de datos
 // pero nos desconectaremos tras insertar los documentos
 mongoose
-  .connect('mongodb://localhost:27017/movies', {
+  .connect('mongodb+srv://root:0810Otto0810@cluster0.3e1cg.mongodb.net/movies?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

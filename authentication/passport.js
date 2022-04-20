@@ -63,7 +63,7 @@ passport.use(
   
           // Si NO existe el usuario, tendremos un error...
           if (!currentUser) {
-            const error = new Error('The user does not exist!');
+            const error = new Error('The email & password combination is incorrect!');
             return done(error);
           }
   

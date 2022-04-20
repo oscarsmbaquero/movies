@@ -6,11 +6,11 @@ import session from 'express-session';
 import './authentication/passport.js'; // Requerimos nuestro archivo de configuración
 
 // import { Movie} from './models/Movie.js';
- import { userRoutes } from './routes/user.routes.js';
- import { moviesRoutes } from './routes/movies.routes.js';
- import { cinemaRoutes } from './routes/cinema.routes.js';
- import { actorsRoutes } from './routes/actor.routes.js';
- 
+import { userRoutes } from './routes/user.routes.js';
+import { moviesRoutes } from './routes/movies.routes.js';
+import { cinemaRoutes } from './routes/cinema.routes.js';
+import { actorsRoutes } from './routes/actor.routes.js';
+
 
 // SERVER
 const PORT = 3000;
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
   });
 
 //listado
- 
+
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
@@ -63,5 +63,5 @@ server.use((err, req, res, next) => {
 
 
 server.listen(PORT, () => {
-  console.log(`Server running in http://localhost:${PORT}`);
+  console.log(`Server running in MongoDB Atlas:${PORT}`);
 });
