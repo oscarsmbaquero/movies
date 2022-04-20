@@ -2,11 +2,12 @@ import express from 'express';
 
 import { Cinema } from '../models/Cinema.js';
 
+
 const router = express.Router();
  router.get('/', async (req, res) => {
     try {
       //
-      const cinemas = await Cinema.find().populate('movies');
+      const cinemas = await Cinema.find().populate({path:'movies', select :'title'});
       return res.status(200).json(cinemas)
     } catch (err) {
       return res.status(500).json(err);
@@ -36,7 +37,7 @@ const router = express.Router();
       if(cinemaLocation.length >0){
       return res.status(200).json(cinemaLocation);
       }else{
-        return res.status(404).json('No existe un cine en esa ciudad');
+        return res.status(404).json('No existe ese cine en esa ciudad');
       }
     } catch (err) {
       return res.status(500).json(err);

@@ -5,7 +5,7 @@ import { Movie } from '../models/Movie.js';
 const router = express.Router();
  router.get('/', async (req, res) => {
     try {
-      const movies = await Movie.find().populate('actor');;
+      const movies = await Movie.find().populate(({path:'actor', select :'name'}));
       return res.status(200).json(movies)
     } catch (err) {
       return res.status(500).json(err);
